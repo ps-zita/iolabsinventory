@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory Management</h1>
+        <button onclick="toggleAddForm()">+ Add Device</button>
+        <button onclick="importFromExcel()">Import XLSX</button>
+        <div id="add-device-form" class="hidden">
+            <h3>Add a New Device</h3>
+            <form id="inventory-form">
+                <label for="device-type">Device Type:</label>
+                <select id="device-type" onchange="toggleDeviceSpecs()" required>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Mobile">Mobile</option>
+                </select>
+                <div id="specs">
+                    <label for="cpu">CPU:</label>
+                    <input type="text" id="cpu" name="cpu">
+                    <label for="gpu">GPU:</label>
+                    <select id="gpu" name="gpu">
+                        <option value="Intel Iris">Intel Iris</option>
+                        <option value="Intel UHD">Intel UHD</option>
+                        <option value="Intel HD">Intel HD</option>
+                        <option value="Radeon iGPU">Radeon iGPU</option>
+                        <option value="Dedicated GPU">Dedicated GPU</option>
+                    </select>
+                    <label for="ram">RAM:</label>
+                    <select id="ram" name="ram">
+                        <option value="4GB">4GB</option>
+                        <option value="8GB">8GB</option>
+                        <option value="16GB">16GB</option>
+                        <option value="32GB">32GB</option>
+                    </select>
+                    <label for="storage">Storage:</label>
+                    <select id="storage" name="storage">
+                        <option value="128GB">128GB</option>
+                        <option value="240GB">240GB</option>
+                        <option value="256GB">256GB</option>
+                        <option value="512GB">512GB</option>
+                        <option value="1TB">1TB</option>
+                        <option value="2TB">2TB</option>
+                    </select>
+                </div>
+                <label for="model-number">Model Number:</label>
+                <input type="text" id="model-number" required>
+                <label for="cosmetic-condition">Cosmetic Condition:</label>
+                <input type="text" id="cosmetic-condition" required>
+                <label for="notes">Notes:</label>
+                <textarea id="notes"></textarea>
+                <button type="submit">Add Device</button>
+            </form>
+        </div>
+        <table id="inventory-table">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Number</th>
+                    <th>CPU</th>
+                    <th>GPU</th>
+                    <th>RAM</th>
+                    <th>Storage</th>
+                    <th>Model Number</th>
+                    <th>Cosmetic Condition</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="exportToExcel()">Export to XLSX</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
